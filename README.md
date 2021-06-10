@@ -14,7 +14,8 @@ quantified for each transcript and cell, resulting in a count matrix with cell I
 
 ### Required command line packages
 - kraken2 (https://github.com/DerrickWood/kraken2)
-- samtools (https://github.com/samtools/)
+- samtools (https://github.com/samtools)
+- bedtools v2.30.0 (https://bedtools.readthedocs.io)
 
 ### Setting up kraken2
 
@@ -33,8 +34,3 @@ converted into a FASTQ file.
 The FASTQ file serves as input for the metagenomic analysis. The output, sequencing read IDs with assigned taxonomy, can be combined with the cell barcode and transcript UMI from the alignment file with unmapped reads to assign each cell and each transcript a taxonomy. If a transcript has different taxonomies assigned, the taxonomy ID with the highest read count is chosen. 
 
 Finally, the results can be exported as a sparse matrix, which facilitates the integration with the differential gene expression data and cell type annotation into AnnData objects. For Kraken 2, the read is assigned to the lowest common ancestor that it maps to. Therefore, the sparse matrix contains the lowest mapped taxonomic level.
-
-# Credits
-This tool uses the following packages:
-- kraken2
-- 
