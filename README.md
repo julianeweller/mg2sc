@@ -6,16 +6,19 @@ metagenomic tools to classify their taxonomy on a single-cell level. This inform
 quantified for each transcript and cell, resulting in a count matrix with cell ID by transcript count for each organism.
 
 # Usage
+## Installation
 
-## Installation
+### Required python packages
+- pysam v0.16.0.1
+- scipy v1.6.2
 
-### Required packages
+### Required command line packages
+- kraken2 (https://github.com/DerrickWood/kraken2)
+- samtools (https://github.com/samtools/)
 
 ### Setting up kraken2
 
-In additional to these packages, you'll need to install kraken2 and setup a reference database. 
-
-Alternatively, you can download pre-built Kraken 2 database (e.g. Standard from 12/2/2020, 36GB) from https://benlangmead.github.io/aws-indexes/k2
+In additional to these packages, you'll need to setup a reference database for kraken2. Please see the kraken2 manual for how to do this (https://github.com/DerrickWood/kraken2/wiki/Manual). Alternatively, you can download pre-built Kraken 2 database (e.g. Standard from 12/2/2020, 36GB) from https://benlangmead.github.io/aws-indexes/k2
 
 ## Execution
 
