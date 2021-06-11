@@ -6,6 +6,7 @@ metagenomic tools to classify their taxonomy on a single-cell level. This inform
 quantified for each transcript and cell, resulting in a count matrix with cell ID by transcript count for each organism.
 
 # Usage
+Developed on python 3.8.
 
 **Required python packages**
 - pysam v0.16.0.1
