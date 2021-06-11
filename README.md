@@ -41,4 +41,5 @@ The FASTQ file serves as input for the metagenomic analysis. The output, sequenc
 
 Finally, the results can be exported as a sparse matrix, which facilitates the integration with the differential gene expression data and cell type annotation into AnnData objects. For Kraken2, the read is assigned to the lowest common ancestor that it maps to. Therefore, the sparse matrix contains the lowest mapped taxonomic level.
 
-![image](https://user-images.githubusercontent.com/46549848/121742917-692a1d80-caf8-11eb-98e2-8a709a3512a9.png)
+![scMeG-kraken](https://user-images.githubusercontent.com/46549848/121743588-7a275e80-caf9-11eb-8d6c-82fb1c217cff.png)
+
