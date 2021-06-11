@@ -19,7 +19,9 @@ quantified for each transcript and cell, resulting in a count matrix with cell I
 
 **Setting up kraken2**
 
-In additional to these packages, you'll need to setup a reference database for kraken2. Please see the kraken2 manual for how to do this (https://github.com/DerrickWood/kraken2/wiki/Manual). Alternatively, you can download pre-built Kraken 2 database (e.g. Standard from 12/2/2020, 36GB) from https://benlangmead.github.io/aws-indexes/k2
+In additional to these packages, you'll need to setup a reference database for kraken2. Please see the kraken2 manual for how to do this (https://github.com/DerrickWood/kraken2/wiki/Manual). Alternatively, you can download pre-built Kraken 2 database (e.g. Standard from 12/2/2020, 36GB) from https://benlangmead.github.io/aws-indexes/k2. 
+
+Please ensure that you have enough memory available for reading in the kraken2 database, e.g. for the example database, more than 40 GB of memory is recommended. If you have less memory available, you could go with a smaller reference database.
 
 **Execution**
 
