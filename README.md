@@ -22,6 +22,7 @@ quantified for each transcript and cell, resulting in a count matrix with cell I
 In additional to these packages, you'll need to setup a reference database for kraken2. Please see the kraken2 manual for how to do this (https://github.com/DerrickWood/kraken2/wiki/Manual). Alternatively, you can download pre-built Kraken 2 database (e.g. Standard from 12/2/2020, 36GB) from https://benlangmead.github.io/aws-indexes/k2
 
 **Execution**
+
 command:\
 python scMeG-kraken.py --input [bamfile, e.g. starsolo/Aligned.sortedByCoord.out.bam] --outdir [output directory] / --DBpath [path to kraken database] --threads [#, e.g. 8] --prefix [prefered file prefix] --verbosity [error/warning/info/debug]
 
@@ -32,6 +33,7 @@ successfull run:
 **Interpretation of results**
 
 # Background
+
 The first step of the tool workflow is the file preparation. From the user input, that
 most importantly includes the read alignment file and the
 corresponding reference database, the unaligned reads are extracted, and the data is
