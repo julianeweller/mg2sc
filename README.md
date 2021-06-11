@@ -26,7 +26,7 @@ In additional to these packages, you'll need to setup a reference database for k
 command:\
 python scMeG-kraken.py --input [bamfile, e.g. starsolo/Aligned.sortedByCoord.out.bam] --outdir [output directory] / --DBpath [path to kraken database] --threads [#, e.g. 8] --prefix [prefered file prefix] --verbosity [error/warning/info/debug]
 
-successfull run:\
+successfull run:
 - "Sparse matrix with single cell information created"
 - "Run finished."
 
