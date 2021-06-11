@@ -25,6 +25,7 @@ In additional to these packages, you'll need to setup a reference database for k
 Please ensure that you have enough memory available for reading in the kraken2 database, e.g. for the example database, more than 40 GB of memory is recommended. If you have less memory available, you could go with a smaller reference database.
 
 **Execution**
+Both files, scMeG-kraken.py and k2sc.py are required for the full workflow and need to be in the same folder.
 
 command:\
 python scMeG-kraken.py --input [bamfile, e.g. starsolo/Aligned.sortedByCoord.out.bam] --outdir [output directory] / --DBpath [path to kraken database] --threads [#, e.g. 8] --prefix [prefered file prefix] --verbosity [error/warning/info/debug]
