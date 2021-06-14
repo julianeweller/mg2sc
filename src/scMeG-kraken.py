@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 logging.info("Started the run.")
 
 # Define the CLI defaults:
-defaults = {'verbosity': 'debug', 'threads': 2}
+defaults = {'verbosity': 'debug', 'threads': 2, 'kraken': 'kraken2'}
 
 # Create the command line interface:
 parser = argparse.ArgumentParser(description='Assign metagenomic assignment to single cells')
@@ -23,6 +23,7 @@ parser.add_argument('-db', '--DBpath', dest ='dbfile', help ="Path to kraken dat
 # optional arguments
 parser.add_argument('-v', '--verbose', dest = 'verbosity', default = defaults['verbosity'], choices = ['error', 'warning', 'info', 'debug'], help = 'Set logging level (default {verbosity})'.format(**defaults))
 parser.add_argument('-n', '--threads', dest = 'threads', default = defaults['threads'], help = "n cores")
+parser.add_argument('-k', '--kraken', dest = 'kraken', default = defaults['kraken'], help = "path to kraken2 executable, if not in $PATH")
 parser.add_argument('-prefix', '--prefix', dest = 'prefix', help = "Prefix file output filenames")
 
 # Parse the CLI:
@@ -57,14 +58,14 @@ logging.info("Threads used: {}".format(args.threads))
 
 # Extract unmapped reads from bam
 # samtools view -b -f 4 starsoloinput.bam > output_unmapped.bam
-cmd1 = "samtools view -b -f 4 " + args.bamfile + " > " + bamfile_out
+cmd1 = "samtools view -@ " + args.threads + " -b -f 4 " + args.bamfile + " > " + bamfile_out
 proc1 = subprocess.Popen(cmd1, shell=True)
 proc1.wait()
 logging.info("Unmapped reads were extracted and saved to {}".format(bamfile_out))
 
 # Convert to fastq
 # bedtools bamtofastq -i output_unmapped.bam -fq output_unmapped.fq
-cmd2 = "bedtools bamtofastq -i " + bamfile_out + " -fq " + fqfile
+cmd2 = "samtools fastq -@ " + args.threads + " -n " + bamfile_out + " > " + fqfile
 proc2 = subprocess.Popen(cmd2, shell=True)
 proc2.wait()
 logging.info("FASTQ generated and saved to {}".format(fqfile))
@@ -72,7 +73,7 @@ logging.info("FASTQ generated and saved to {}".format(fqfile))
 ############# Run metagenomic tool on fastq and report summary #############
 # run kraken
 # kraken2 --threads 2 --db dbpath --report reportfilepath inputfastqpath > krakenoutputfilepath
-cmd3 = "kraken2 --threads " + args.threads + " --db " + args.dbfile + " --report " + reportf + " " + fqfile + " > " + krakenoutfile
+cmd3 = args.kraken + " --threads " + args.threads + " --db " + args.dbfile + " --report " + reportf + " " + fqfile + " > " + krakenoutfile
 proc3 = subprocess.Popen(cmd3, shell=True)
 proc3.wait()
 logging.info("Kraken2 finished running, krakenoutput saved to {}".format(krakenoutfile))
