@@ -13,11 +13,12 @@ def mg2sc(bamfile, mgfile, dbfile, outdir):
     Creates a sparse matrix with transcript count per organism for each cell."""
 
     # Generate variables based on input
-    matrixfile = outdir + 'matrix.mtx'
-    cellfile = outdir + 'barcodes.tsv'
-    taxfile = outdir + 'taxids.tsv'
+    os.mkdir(outdir + '/counts')
+    matrixfile = outdir + '/counts/matrix.mtx'
+    cellfile = outdir + '/counts/barcodes.tsv'
+    taxfile = outdir + '/counts/genes.tsv'
     dbfile = os.path.join(dbfile, 'inspect.txt')
-    dbfile_out = outdir + 'inspect_db.txt'
+    dbfile_out = outdir + '/counts/hierarchy.txt'
 
     # Extract taxonomy IDs for each transcript
     mg_dict = extract_ids(bamfile, mgfile)
