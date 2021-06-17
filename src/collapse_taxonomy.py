@@ -101,6 +101,8 @@ def collapse_taxonomy(adata, hierarchy, target):
 	#(remove '' as it's of no interest)
 	var_names = np.unique(levels)
 	var_names = var_names[var_names != '']
+	#this goes better on CSC
+	holder = adata.X.tocsc()
 	c = scipy.sparse.csr_matrix(np.hstack([np.sum(holder[:,levels==n],1) for n in var_names]))
 	#create output object
 	bdata = anndata.AnnData(c, obs=adata.obs)
