@@ -36,6 +36,10 @@ successfull run:
 
 **Interpretation of results**
 
+The pipeline produces a cellranger2-style formatted output folder, which can be easily imported for downstream analysis. The observation space is the complete list of barcodes with reads identified by the pipeline, and the feature space is complete list of organisms (and other elements of the kraken2 hierarchy) that were identified.
+
+It can be useful to collapse this count matrix to more general categories, such as family or genus. You can use `src/collapse_taxonomy.py` for that, with a quick demo shown in [a notebook](demo/collapse_taxonomy_demo.ipynb).
+
 # Background
 
 The first step of the tool workflow is the file preparation. From the user input, that
