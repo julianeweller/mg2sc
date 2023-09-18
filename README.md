@@ -9,14 +9,14 @@ quantified for each transcript and cell, resulting in a count matrix with cell I
 Developed on python 3.8.
 
 **Required python packages**
-- pysam v0.16.0.1
-- scipy v1.6.2
-- regex v2021.4.4   
+- pysam (tested with v0.16.0.1)
+- scipy (tested with v1.6.2)
+- regex (tested with v2021.4.4)
 
 **Required command line packages**
-- kraken2 (https://github.com/DerrickWood/kraken2, conda install kraken2)
+- kraken2 (https://github.com/DerrickWood/kraken2, `conda install kraken2`)
 - samtools (https://github.com/samtools)
-- bedtools v2.30.0 (https://bedtools.readthedocs.io)
+- bedtools (https://bedtools.readthedocs.io, tested with v2.30.0)
 
 **Setting up kraken2**
 
@@ -28,7 +28,9 @@ Please ensure that you have enough memory available for reading in the kraken2 d
 Both files, scMeG-kraken.py and k2sc.py are required for the full workflow and need to be in the same folder.
 
 command:\
-python scMeG-kraken.py --input [bamfile, e.g. starsolo/Aligned.sortedByCoord.out.bam] --outdir [output directory] / --DBpath [path to kraken database] --threads [#, e.g. 8] --prefix [prefered file prefix] --verbosity [error/warning/info/debug]
+python scMeG-kraken.py --input [bamfile, e.g. possorted_genome_bam.bam from Cellranger] --outdir [output directory] / --DBpath [path to kraken database] --threads [#, e.g. 8] --prefix [prefered file prefix] --verbosity [error/warning/info/debug]
+
+The input BAM file needs to have unmapped reads present, and needs to have `CB`/`UB` tags for the reads. Cellranger output BAMs fulfil these conditions, but if you make yours with other tools (e.g. starsolo) please make sure that these conditions are met.
 
 successfull run:
 - "Sparse matrix with single cell information created"
